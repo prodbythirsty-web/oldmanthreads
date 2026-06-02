@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Old Man Threads — Handstitched floral bags made one at a time. No factories, no machines. Just craft.">
+<title>Old Man Threads — Handmade Floral Garden Bag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="flash-banner" role="banner">
+  <div>
+    <div class="banner-text">&#9889; Flash Sale Ends In:</div>
+    <div class="banner-sub">Worldwide Free Shipping Included</div>
+  </div>
+  <div class="countdown">
+    <div class="cd-block"><div class="num" id="cd-d">02</div><div class="lbl">days</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="num" id="cd-h">23</div><div class="lbl">hrs</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="num" id="cd-m">55</div><div class="lbl">min</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="num" id="cd-s">00</div><div class="lbl">sec</div></div>
+  </div>
+</div>
+
+<nav>
+  <ul class="nav-links" role="list">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Catalog</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-logo">
+    <span class="logo-main">Old Man Threads</span>
+    <span class="logo-sub">Handcrafted Since Always</span>
+  </a>
+  <div class="nav-icons">
+    <button aria-label="Search">&#128269;</button>
+    <button aria-label="Open cart" id="nav-cart-btn" onclick="openCart()">
+      &#128717;
+      <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+<section class="product-section">
+  <div class="product-left">
+    <div class="main-image-wrap" id="main-wrap">
+      <img id="main-img" src="bag1.jpg" alt="Old Man Threads Handstitched Floral Garden Bag — front view" style="width:100%;height:100%;object-fit:cover;display:block">
+      <video id="main-video" src="" muted playsinline loop style="width:100%;height:100%;object-fit:cover;display:none"></video>
+    </div>
+    <div class="thumbnails" role="list">
+      <button class="thumb" aria-selected="true" aria-label="Product photo 1"
+        onclick="switchMedia(this,'image','bag1.jpg','Product photo 1')">
+        <img src="bag1.jpg" alt="Product photo 1">
+      </button>
+      <button class="thumb" aria-selected="false" aria-label="Product photo 2"
+        onclick="switchMedia(this,'image','bag2.jpg','Product photo 2')">
+        <img src="bag2.jpg" alt="Product photo 2">
+      </button>
+    </div>
+  </div>
+
+  <div class="product-right">
+    <h1 class="product-title">Old Man Threads<br>Floral Garden Bag</h1>
+    <div class="stars-row">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <button class="review-count"
+        onclick="document.querySelector('.testimonials-section').scrollIntoView({behavior:'smooth'})">
+        127+ Reviews
+      </button>
+    </div>
+    <div class="price-row">
+      <span class="price-now" id="hero-price">$49.00</span>
+      <span class="price-was" id="hero-was">$98.00</span>
+      <span class="save-badge">&#128154; Save 50%</span>
+    </div>
+    <div class="perks">
+      <div class="perk"><span class="icon">&#127807;</span> Handstitched with decades of craft</div>
+      <div class="perk"><span class="icon">&#129419;</span> Every bag is one of a kind</div>
+      <div class="perk"><span class="icon">&#9992;&#65039;</span> Free worldwide shipping</div>
+    </div>
+
+    <div class="bundle-label"><span>Bundle &amp; Save</span></div>
+
+    <div class="bundle-cards" role="radiogroup" aria-label="Bundle options">
+
+      <!-- BUY 1 -->
+      <div class="bundle-card" id="card-1" role="radio" aria-checked="false" tabindex="0"
+           onclick="selectBundle(1)"
+           onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();selectBundle(1)}">
+        <div class="bundle-header">
+          <div class="bundle-left">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <div>
+              <div class="bundle-title">Buy 1 Bag</div>
+              <div class="bundle-subtitle">Standard price</div>
+            </div>
+          </div>
+          <div class="bundle-right">
+            <div class="bundle-price">$49.00</div>
+            <div class="bundle-was">$98.00</div>
+          </div>
+        </div>
+        <div class="bundle-addons" id="addons-1">
+          <div class="addon-row" data-addon="ship">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'1','ship')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'1','ship')}">&#10003;</div>
+              <span class="addon-icon">&#128230;</span><span class="addon-name">Shipping Protection</span>
+            </div><span class="addon-price">+$6.00</span>
+          </div>
+          <div class="addon-row" data-addon="warr">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'1','warr')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'1','warr')}">&#10003;</div>
+              <span class="addon-icon">&#128737;&#65039;</span><span class="addon-name">30-Day Warranty</span>
+            </div><span class="addon-price">+$7.00</span>
+          </div>
+          <div class="addon-row" data-addon="myst">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'1','myst')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'1','myst')}">&#10003;</div>
+              <span class="addon-icon">&#127873;</span><span class="addon-name">Mystery Box</span>
+            </div><span class="addon-price">+$15.00</span>
+          </div>
+          <div class="addon-row" data-addon="supp">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'1','supp')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'1','supp')}">&#10003;</div>
+              <span class="addon-icon">&#10084;&#65039;</span><span class="addon-name">Show Your Support</span>
+            </div><span class="addon-price">+$15.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUY 2 — pre-selected, addons on by default -->
+      <div class="bundle-card recommended selected" id="card-2" role="radio" aria-checked="true" tabindex="0"
+           onclick="selectBundle(2)"
+           onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();selectBundle(2)}">
+        <div class="recommended-tag">&#11088; Most Popular</div>
+        <div class="bundle-header">
+          <div class="bundle-left">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <div>
+              <div class="bundle-title">Buy 2 Bags</div>
+              <div class="bundle-subtitle">Share one, keep one</div>
+            </div>
+            <div class="bundle-save-badge">SAVE $98</div>
+          </div>
+          <div class="bundle-right">
+            <div class="bundle-price">$98.00</div>
+            <div class="bundle-was">$196.00</div>
+          </div>
+        </div>
+        <div class="bundle-addons" id="addons-2">
+          <div class="addon-row" data-addon="ship">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'2','ship')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'2','ship')}">&#10003;</div>
+              <span class="addon-icon">&#128230;</span><span class="addon-name">Shipping Protection</span>
+            </div><span class="addon-price">+$6.00</span>
+          </div>
+          <div class="addon-row" data-addon="warr">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'2','warr')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'2','warr')}">&#10003;</div>
+              <span class="addon-icon">&#128737;&#65039;</span><span class="addon-name">30-Day Warranty</span>
+            </div><span class="addon-price">+$7.00</span>
+          </div>
+          <div class="addon-row" data-addon="myst">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'2','myst')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'2','myst')}">&#10003;</div>
+              <span class="addon-icon">&#127873;</span><span class="addon-name">Mystery Box</span>
+            </div><span class="addon-price">+$15.00</span>
+          </div>
+          <div class="addon-row" data-addon="supp">
+            <div class="addon-left">
+              <div class="addon-check checked" role="checkbox" aria-checked="true" tabindex="0"
+                onclick="toggleAddon(event,this,'2','supp')"
+                onkeydown="if(event.key===' '){event.preventDefault();toggleAddon(event,this,'2','supp')}">&#10003;</div>
+              <span class="addon-icon">&#10084;&#65039;</span><span class="addon-name">Show Your Support</span>
+            </div><span class="addon-price">+$15.00</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="atc-btn" id="main-atc" onclick="addToCart()">&#128717; Add to Cart</button>
+
+    <div class="delivery-timeline">
+      <div class="timeline-step">
+        <div class="step-icon">&#128717;</div>
+        <div class="step-date" id="tl-today">Today</div>
+        <div class="step-label">Order Placed</div>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-step">
+        <div class="step-icon">&#128230;</div>
+        <div class="step-date" id="tl-ready">&#8212;</div>
+        <div class="step-label">Order Ready</div>
+      </div>
+      <div class="timeline-line"></div>
+      <div class="timeline-step">
+        <div class="step-icon">&#127873;</div>
+        <div class="step-date" id="tl-del">&#8212;</div>
+        <div class="step-label">Delivered</div>
+      </div>
+    </div>
+
+    <div style="background:var(--cream);border:1px solid var(--linen);border-radius:var(--r12);padding:16px 18px;margin-top:16px">
+      <p style="font-size:13px;color:var(--bark-light);line-height:1.7;margin-bottom:8px">"Didn't expect this quality. The stitching is clean, feels sturdy, and it actually holds everything I need without losing shape. Gets compliments every time I use it."</p>
+      <div style="font-size:12px;color:var(--bark-light)">Emily R. &nbsp;<span style="color:#D4A017">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+    </div>
+
+    <div style="margin-top:16px">
+      <details style="border:1px solid var(--linen);border-radius:var(--r8);background:#fff;margin-bottom:8px;overflow:hidden">
+        <summary style="padding:12px 16px;cursor:pointer;font-size:13px;font-weight:700;color:var(--bark);list-style:none;display:flex;justify-content:space-between;align-items:center">
+          <span>&#9745; Is the bag handmade?</span><span style="font-size:16px;color:var(--linen-dark)">&#8964;</span>
+        </summary>
+        <div style="padding:0 16px 12px;font-size:13px;color:var(--bark-light);line-height:1.6">Yes &#8212; every bag is hand-stitched by one craftsman. No machines, no factories, ever.</div>
+      </details>
+      <details style="border:1px solid var(--linen);border-radius:var(--r8);background:#fff;margin-bottom:8px;overflow:hidden">
+        <summary style="padding:12px 16px;cursor:pointer;font-size:13px;font-weight:700;color:var(--bark);list-style:none;display:flex;justify-content:space-between;align-items:center">
+          <span>&#9745; What can it fit inside?</span><span style="font-size:16px;color:var(--linen-dark)">&#8964;</span>
+        </summary>
+        <div style="padding:0 16px 12px;font-size:13px;color:var(--bark-light);line-height:1.6">Wallet, phone, keys, sunglasses, a small notebook &#8212; soft yet structured, holds its shape.</div>
+      </details>
+      <details style="border:1px solid var(--linen);border-radius:var(--r8);background:#fff;overflow:hidden">
+        <summary style="padding:12px 16px;cursor:pointer;font-size:13px;font-weight:700;color:var(--bark);list-style:none;display:flex;justify-content:space-between;align-items:center">
+          <span>&#9745; Shipping Times</span><span style="font-size:16px;color:var(--linen-dark)">&#8964;</span>
+        </summary>
+        <div style="padding:0 16px 12px;font-size:13px;color:var(--bark-light);line-height:1.6">Ships in 1&#8211;2 days. Worldwide delivery in 7&#8211;12 business days, with tracking included.</div>
+      </details>
+      <details style="border:1px solid var(--linen);border-radius:var(--r8);background:#fff;margin-top:8px;overflow:hidden">
+        <summary style="padding:12px 16px;cursor:pointer;font-size:13px;font-weight:700;color:var(--bark);list-style:none;display:flex;justify-content:space-between;align-items:center">
+          <span>&#9745; Can I return or exchange?</span><span style="font-size:16px;color:var(--linen-dark)">&#8964;</span>
+        </summary>
+        <div style="padding:0 16px 12px;font-size:13px;color:var(--bark-light);line-height:1.6">Absolutely. 30-day return policy on all items. If your bag arrives damaged or you're not satisfied, reach out and we'll make it right &#8212; no awkward questions.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="ti-icon">&#129309;</div>
+    <div><strong>30-Day Returns</strong>Not happy? We'll make it right.</div>
+  </div>
+  <div class="trust-item">
+    <div class="ti-icon">&#128274;</div>
+    <div><strong>Secure Checkout</strong>SSL encrypted, always.</div>
+  </div>
+  <div class="trust-item">
+    <div class="ti-icon">&#9992;&#65039;</div>
+    <div><strong>Free Shipping</strong>Everywhere on Earth.</div>
+  </div>
+  <div class="trust-item">
+    <div class="ti-icon">&#129525;</div>
+    <div><strong>100% Handmade</strong>No factories, ever.</div>
+  </div>
+</div>
+
+<div class="below-fold">
+  <div class="section-divider"></div>
+
+  <!-- STORY SECTION 1: Text LEFT, Old Man RIGHT (4:3) -->
+  <div class="heart-section">
+    <div class="heart-text reveal reveal-d1">
+      <div class="eyebrow">&#127807; Our Story</div>
+      <h2>Built With <em>Heart</em> &#129521;&#10024;</h2>
+      <p>Every bag is stitched by hand at the kitchen table, never factory-made. The same fingers that tie each braid have been crafting since long before machines tried to replace them.</p>
+      <p>As a small one-man workshop, each order truly matters. When you carry one of these bags, you carry a piece of something genuine &#8212; a story sewn into every thread.</p>
+      <p class="sig">&#8212; Thank you for believing in something real &#128591;</p>
+      <a href="#" class="heart-cta">Shop the Collection</a>
+    </div>
+    <div class="heart-img-wrap heart-img-wide reveal reveal-d2">
+      <video src="video1.mp4" muted playsinline loop autoplay style="width:100%;height:100%;object-fit:cover;display:block"></video>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"></div>
+
+  <!-- STORY SECTION 2: Old Man LEFT (4:3), Text RIGHT -->
+  <div class="heart-section">
+    <div class="heart-img-wrap heart-img-wide reveal reveal-d1">
+      <video src="video2.mp4" muted playsinline loop autoplay style="width:100%;height:100%;object-fit:cover;display:block"></video>
+    </div>
+    <div class="heart-text reveal reveal-d2">
+      <div class="eyebrow">&#129525; The Craft</div>
+      <h2>Every Stitch <em>Tells</em> a Story &#9999;&#65039;</h2>
+      <p>No two bags are the same. Each one begins with fabric chosen by hand, cut without a pattern, and braided into a handle that will last for years. There are no shortcuts here.</p>
+      <p>What you hold is the result of hours of patient work &#8212; pressed flat, tested for strength, and packed with care before it ever reaches you.</p>
+      <p class="sig">&#8212; Made slowly, on purpose &#127800;</p>
+      <a href="#" class="heart-cta">See How It&#8217;s Made</a>
+    </div>
+  </div>
+
+
+
+  <div class="section-divider reveal"></div>
+
+  <section class="testimonials-section">
+    <h2 class="reveal">What People Are Saying</h2>
+    <div class="testimonials-grid">
+      <article class="testimonial-card reveal reveal-d1">
+        <div class="quote-icon">&#10078;</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testimonial-title">Premium Quality &#10024;</div>
+        <p class="testimonial-body">The quality feels incredibly rich and the floral embroidery is so unique. Way nicer than the price suggests. Gets compliments everywhere I go.</p>
+        <div class="testimonial-author">&#8212; Vanessa T., March 2026</div>
+      </article>
+      <article class="testimonial-card reveal reveal-d2">
+        <div class="quote-icon">&#10078;</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testimonial-title">Fast Shipping &#128666;</div>
+        <p class="testimonial-body">Ordered as a gift and it arrived way sooner than expected. Packaged beautifully with a handwritten note inside. Absolutely perfect.</p>
+        <div class="testimonial-author">&#8212; Chris G., April 2026</div>
+      </article>
+      <article class="testimonial-card reveal reveal-d3">
+        <div class="quote-icon">&#10078;</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testimonial-title">Perfect Size &#128092;</div>
+        <p class="testimonial-body">Holds everything I need without feeling heavy. The braided handle is so comfortable and just right for everyday use.</p>
+        <div class="testimonial-author">&#8212; Karen M., May 2026</div>
+      </article>
+    </div>
+  </section>
+</div></div>
+</main>
+
+<footer>
+  <svg class="footer-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#3D2B1F"/>
+    <path d="M0,50 C480,20 960,70 1440,50 L1440,60 L0,60 Z" fill="#3D2B1F" opacity="0.45"/>
+  </svg>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">Old Man Threads</div>
+      <p>Every bag tells a story. Handcrafted with decades of patience, love, and a needle that never rests.</p>
+    </div>
+    <nav class="footer-links">
+      <h4>Quick Links</h4>
+      <ul role="list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Catalog</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </nav>
+    <div class="newsletter">
+      <h4>Join the Thread &#127807;</h4>
+      <p>Get exclusive offers, early releases, and stories from the workshop &#8212; straight to your inbox.</p>
+      <div class="newsletter-form">
+        <label for="nl-email" class="sr-only">Email address</label>
+        <input id="nl-email" type="email" placeholder="Your email address" autocomplete="email">
+        <button type="button" onclick="handleNewsletter()">Sign Up</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&#169; <span id="copy-year"></span>, Old Man Threads &#8212; Handcrafted with &#10084;&#65039;</p>
+    <div class="payment-icons">
+      <span class="pay-icon">AMEX</span>
+      <span class="pay-icon">APPLE</span>
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">DISC</span>
+      <span class="pay-icon">GPAY</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-atc" id="sticky-atc">
+  <div class="sticky-atc-info">
+    <div class="sticky-thumb">
+      <img src="bag1.jpg" alt="Floral Garden Bag" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <div>
+      <div class="sticky-atc-name">Floral Garden Bag</div>
+      <div class="sticky-atc-price" id="sticky-price">$98.00</div>
+    </div>
+  </div>
+  <div class="sticky-atc-right">
+    <button class="sticky-atc-btn" onclick="addToCart()">Add to Cart</button>
+  </div>
+</div>
+
+<div class="cart-toast" id="toast" role="status" aria-live="polite"></div>
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="drawer-header">
+    <h2>Cart &bull; <span id="cart-item-count">0</span> items</h2>
+    <button class="drawer-close" onclick="closeCart()" aria-label="Close cart">&#10005;</button>
+  </div>
+  <div class="cart-timer-bar" id="cart-timer-bar" style="display:none">&#128274; Cart reserved for <span id="cart-reserve-timer">10:00</span></div>
+  <div class="drawer-body" id="drawer-body"></div>
+  <div class="drawer-footer" id="drawer-footer" style="display:none">
+    <button class="checkout-btn" onclick="openCheckout()">Check out</button>
+    <button class="continue-btn" onclick="closeCart()">Continue Shopping</button>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid #e5e7eb">
+      <!-- Visa -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" style="height:22px;border:1px solid #e5e7eb;border-radius:3px;background:#fff" role="img" aria-label="Visa"><rect width="38" height="24" rx="3" fill="#fff"/><path d="M14.5 16.5H12l1.5-9h2.5L14.5 16.5zM22 7.7c-.5-.2-1.3-.4-2.2-.4-2.4 0-4.1 1.3-4.1 3.1 0 1.4 1.2 2.1 2.2 2.6 1 .5 1.3.8 1.3 1.2 0 .6-.8.9-1.5.9-.9 0-1.6-.2-2.5-.6l-.3-.2-.4 2.2c.7.3 1.9.6 3.1.6 2.6 0 4.2-1.3 4.2-3.2 0-1.1-.6-1.9-2-2.5-.8-.4-1.3-.7-1.3-1.2 0-.4.4-.8 1.3-.8.8 0 1.3.2 1.7.3l.2.1.3-2zM27.3 7.5h-1.9c-.6 0-1 .2-1.2.7l-3.5 8.3h2.5l.5-1.4h3l.3 1.4H29l-1.7-9zm-3 5.7l.9-2.6.5 2.6h-1.4zM11 7.5L8.6 13.6l-.3-1.2c-.4-1.4-1.7-2.9-3.2-3.7l2.2 7.8h2.5l3.8-9H11z" fill="#1A1F71"/><path d="M6.7 7.5H2.9L2.8 7.7c3 .8 5 2.7 5.8 4.9L7.9 8.2c-.1-.5-.5-.7-1.2-.7z" fill="#F9A533"/></svg>
+      <!-- Mastercard -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" style="height:22px;border:1px solid #e5e7eb;border-radius:3px;background:#fff" role="img" aria-label="Mastercard"><rect width="38" height="24" rx="3" fill="#fff"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 6.8a7 7 0 0 1 0 10.4A7 7 0 0 1 19 6.8z" fill="#FF5F00"/></svg>
+      <!-- Amex -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" style="height:22px;border:1px solid #e5e7eb;border-radius:3px;background:#fff" role="img" aria-label="Amex"><rect width="38" height="24" rx="3" fill="#007BC1"/><path d="M6 15V9h5.5l.7 1.7.7-1.7H38v5.6L36.8 15H6z" fill="#007BC1"/><path d="M7 10h1.8l1 2.5 1-2.5H12v4H11v-3l-1.2 3H9L7.8 11v3H7v-4zm5.5 0H16v1h-2.5v.7H16v1h-2.5v.8H16v1h-3.5v-4zm9.2 0l-2 4h1.2l.3-.8h2l.3.8H24l-2-4h-.3zm.3 1.3l.6 1.4h-1.2l.6-1.4zm2.5-1.3h2c1.2 0 2 .7 2 2s-.8 2-2 2h-2v-4zm1 1v2h1c.5 0 1-.4 1-1s-.5-1-1-1h-1zm3.5 0v-1h3v1h-1v3h-1v-3h-1z" fill="#fff"/></svg>
+      <!-- Discover -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" style="height:22px;border:1px solid #e5e7eb;border-radius:3px;background:#fff" role="img" aria-label="Discover"><rect width="38" height="24" rx="3" fill="#fff"/><path d="M38 16c0 1.7-1.3 3-3 3H20c9.4-1.5 15.3-7 18-11v8z" fill="#F76F20"/><circle cx="19" cy="12" r="5" fill="#F76F20"/><path d="M3 9h1.5c1.7 0 2.8 1.1 2.8 3S6.2 15 4.5 15H3V9zm1 1v4h.5c1 0 1.8-.8 1.8-2s-.8-2-1.8-2H4zm4-1h1v6H8V9zm4.3 0c.8 0 1.5.3 2 .9l-.7.7c-.3-.4-.8-.6-1.3-.6-.5 0-.8.2-.8.6 0 .3.2.5.9.7l.5.2c1 .3 1.5.8 1.5 1.7 0 1-.8 1.8-2.1 1.8-.9 0-1.7-.4-2.2-1l.7-.7c.3.4.9.7 1.5.7.6 0 1-.3 1-.7 0-.4-.2-.5-1-.8l-.5-.2c-.9-.3-1.4-.8-1.4-1.6 0-.9.8-1.7 1.9-1.7zm3 0h1.1l1.1 3.5 1.1-3.5h1.1L18.5 15h-1L16 9zm5 0h3v1h-2v1.5h2V12.5h-2V14h2v1h-3V9zm4 0h1.8c1.1 0 1.8.6 1.8 1.6 0 .7-.4 1.3-1 1.5l1.4 2.9h-1.2l-1.2-2.7H27V15h-1V9zm1 1v1.5h.7c.5 0 .8-.3.8-.8s-.3-.7-.8-.7H28z" fill="#231F20"/></svg>
+      <!-- Apple Pay -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" style="height:22px;border:1px solid #e5e7eb;border-radius:3px;background:#000" role="img" aria-label="Apple Pay"><rect width="38" height="24" rx="3" fill="#000"/><path d="M12.5 8.5c.4-.5.7-1.1.6-1.8-.6 0-1.3.4-1.7.9-.4.4-.7 1.1-.6 1.7.6.1 1.3-.3 1.7-.8zm.6 1c-1 0-1.8.6-2.2.6-.5 0-1.2-.5-2-.5C7.6 9.6 6.3 10.6 6.3 12.5c0 1.2.5 2.5 1 3.3.5.7 1 1.4 1.7 1.4.7 0 .9-.4 1.8-.4.9 0 1.1.4 1.8.4.7 0 1.2-.7 1.7-1.4.3-.5.5-1 .6-1.5-.6-.3-1.5-1-1.5-2.3 0-1.1.7-1.8 1.4-2.2-.4-.6-1.2-1-1.7-1.3h-.6zM18 7.2h-2.5V15H17v-2.8h1.5c1.4 0 2.3-.9 2.3-2.5S19.4 7.2 18 7.2zm-.1 1.2c.9 0 1.4.5 1.4 1.4s-.5 1.4-1.4 1.4H17V8.4h.9zm5.2 6.5c.7 0 1.4-.4 1.7-1h0V15H26v-5.4h-1.2V11h0c-.3-.6-.9-1-1.7-1-1.4 0-2.3 1.1-2.3 2.8s.9 2.8 2.3 2.8zm.3-1.1c-.8 0-1.3-.7-1.3-1.7s.5-1.7 1.3-1.7 1.3.7 1.3 1.7-.5 1.7-1.3 1.7zm4.8 3.8c1.2 0 1.8-.5 2.3-1.8L32.8 10H31.5l-1.2 3.7h0L29.1 10h-1.3l2 5.5-.1.3c-.2.6-.5.8-1 .8h-.4v1h.4c.6.1.9.1 1.5-.1z" fill="#fff"/></svg>
+      <!-- Google Pay -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" style="height:22px;border:1px solid #e5e7eb;border-radius:3px;background:#fff" role="img" aria-label="Google Pay"><rect width="38" height="24" rx="3" fill="#fff"/><path d="M18.5 12.2v2.4h-.8V8.5h2c.5 0 1 .2 1.3.5.4.3.5.8.5 1.2 0 .5-.2.9-.5 1.2-.4.3-.8.5-1.3.5h-1.2zm0-3v2.3h1.2c.3 0 .6-.1.8-.3.2-.2.3-.5.3-.8s-.1-.6-.3-.8c-.2-.2-.5-.3-.8-.3h-1.2zm5.3 1c.6 0 1 .2 1.3.5.3.3.5.7.5 1.2v2.5H25v-.6h0c-.3.4-.7.7-1.2.7-.4 0-.8-.1-1.1-.4-.3-.2-.4-.6-.4-.9 0-.4.2-.7.5-.9.3-.2.7-.3 1.2-.3.4 0 .8.1 1 .2v-.2c0-.3-.1-.5-.3-.7-.2-.2-.4-.3-.7-.3-.4 0-.7.2-.9.5l-.7-.4c.4-.6.9-.9 1.7-.9zm-.2 3.6c.2 0 .5-.1.6-.2.2-.2.3-.4.3-.6-.2-.2-.6-.3-1-.3-.3 0-.5.1-.7.2-.2.1-.3.3-.3.5s.1.4.2.5c.2.1.4.2.7.2h.2zm4.7-3.5l-2.6 6h-.8l1-2.1-1.7-3.9h.9l1.2 2.9h0l1.2-2.9h.8z" fill="#3C4043"/><path d="M14.2 11.8c0-.3 0-.5-.1-.8H10v1.4h2.4c-.1.5-.4.9-.8 1.2v1h1.3c.8-.7 1.3-1.7 1.3-2.8z" fill="#4285F4"/><path d="M10 15.5c1.2 0 2.3-.4 3-1.1l-1.3-1c-.4.3-1 .4-1.7.4-1.3 0-2.4-.9-2.8-2.1H5.9v1c.7 1.5 2.2 2.8 4.1 2.8z" fill="#34A853"/><path d="M7.2 11.7c-.1-.3-.2-.6-.2-1s.1-.7.2-1V8.8H5.9C5.5 9.5 5.3 10.2 5.3 11s.2 1.5.6 2.2l1.3-1.5z" fill="#FBBC04"/><path d="M10 8.6c.7 0 1.3.3 1.8.7l1.3-1.3C12.3 7.4 11.2 7 10 7 8.1 7 6.6 8 5.9 9.5l1.3 1c.4-1.2 1.5-1.9 2.8-1.9z" fill="#EA4335"/></svg>
+      <!-- Shop Pay -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" style="height:22px;border:1px solid #e5e7eb;border-radius:3px;background:#5433EB" role="img" aria-label="Shop Pay"><rect width="38" height="24" rx="3" fill="#5433EB"/><path d="M7.5 10.5c0-.8.6-1.5 1.5-1.5.4 0 .8.2 1.1.4l-.5.6c-.2-.2-.4-.3-.6-.3-.4 0-.7.3-.7.8v.1c0 .5.3.8.7.8.3 0 .5-.1.7-.3l.5.5c-.3.3-.7.5-1.2.5-.9 0-1.5-.7-1.5-1.6zm3.2-2.3h.8v1.4c.2-.2.5-.4.9-.4.7 0 1.1.5 1.1 1.2v2h-.8v-1.8c0-.4-.2-.6-.5-.6s-.6.2-.6.6v1.8h-.8V8.2zm3.4 2.3c0-.9.6-1.6 1.5-1.6.9 0 1.5.7 1.5 1.6v.2h-2.2c.1.4.4.6.7.6.3 0 .5-.1.7-.3l.5.4c-.3.4-.7.6-1.2.6-.9 0-1.5-.7-1.5-1.6zm2.2-.3c0-.4-.3-.6-.7-.6s-.7.2-.7.6h1.4zm1.3-1.2h.8l.6 1.8.6-1.8h.8l-1 2.9c-.2.6-.5.9-1.1.9h-.4v-.7h.3c.2 0 .4-.1.5-.4l-1.1-2.7zm4.2-.1c.8 0 1.4.7 1.4 1.6s-.6 1.6-1.4 1.6c-.4 0-.7-.2-.9-.4v1.5h-.8V9.1h.8v.4c.2-.3.5-.5.9-.5zm-.2.7c-.4 0-.7.4-.7.9s.3.9.7.9.7-.4.7-.9-.3-.9-.7-.9zm2-1.4h.8v4.4h-.8V8.2zm1.6 1.3h.8v.4c.2-.3.5-.5.9-.5.4 0 .7.2.9.5.2-.3.5-.5 1-.5.6 0 1 .4 1 1.1v2.1h-.8v-1.9c0-.3-.2-.5-.4-.5s-.5.2-.5.5v1.9h-.8v-1.9c0-.3-.2-.5-.4-.5s-.5.2-.5.5v1.9h-.8V9.5z" fill="#fff"/></svg>
+    </div>
+  </div>
+</div>
+
+<div class="checkout-modal" id="checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout">
+  <div class="checkout-backdrop" onclick="closeCheckout()"></div>
+  <div class="checkout-box" id="checkout-box">
+    <div id="success-wrap" style="display:none">
+      <div class="checkout-success">
+        <div class="success-icon">&#10003;</div>
+        <h3>Order Placed! &#127881;</h3>
+        <p>Thank you! Your handcrafted bag is being carefully prepared and will ship soon. You'll receive a confirmation email with tracking shortly.</p>
+        <button class="success-btn" onclick="closeCheckout();resetCart()">Back to Shop</button>
+      </div>
+    </div>
+    <div id="form-wrap">
+      <div class="checkout-header">
+        <h2>Checkout</h2>
+        <button class="modal-close" onclick="closeCheckout()" aria-label="Close checkout">&#10005;</button>
+      </div>
+      <div class="checkout-steps">
+        <div class="step-tab active" id="tab-1">1. Shipping</div>
+        <div class="step-tab" id="tab-2">2. Payment</div>
+        <div class="step-tab" id="tab-3">3. Review</div>
+      </div>
+      <div class="checkout-panel active" id="panel-1">
+        <div class="sec-title">Contact Information</div>
+        <div class="form-row c2">
+          <div class="form-group" id="fg-fn">
+            <label for="f-fn">First Name</label>
+            <input type="text" id="f-fn" autocomplete="given-name" placeholder="Jane">
+            <span class="field-err">Required</span>
+          </div>
+          <div class="form-group" id="fg-ln">
+            <label for="f-ln">Last Name</label>
+            <input type="text" id="f-ln" autocomplete="family-name" placeholder="Smith">
+            <span class="field-err">Required</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" id="fg-em">
+            <label for="f-em">Email</label>
+            <input type="email" id="f-em" autocomplete="email" placeholder="jane@example.com">
+            <span class="field-err">Valid email required</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-ph">Phone (optional)</label>
+            <input type="tel" id="f-ph" autocomplete="tel" placeholder="+1 555 000 0000">
+          </div>
+        </div>
+        <div class="sec-title" style="margin-top:20px">Shipping Address</div>
+        <div class="form-row">
+          <div class="form-group" id="fg-ad">
+            <label for="f-ad">Address</label>
+            <input type="text" id="f-ad" autocomplete="street-address" placeholder="123 Main St">
+            <span class="field-err">Required</span>
+          </div>
+        </div>
+        <div class="form-row c2">
+          <div class="form-group" id="fg-ct">
+            <label for="f-ct">City</label>
+            <input type="text" id="f-ct" autocomplete="address-level2" placeholder="New York">
+            <span class="field-err">Required</span>
+          </div>
+          <div class="form-group" id="fg-zp">
+            <label for="f-zp">ZIP / Postal Code</label>
+            <input type="text" id="f-zp" autocomplete="postal-code" placeholder="10001">
+            <span class="field-err">Required</span>
+          </div>
+        </div>
+        <div class="form-row c2">
+          <div class="form-group">
+            <label for="f-st">State / Province</label>
+            <input type="text" id="f-st" autocomplete="address-level1" placeholder="NY">
+          </div>
+          <div class="form-group">
+            <label for="f-co">Country</label>
+            <select id="f-co" autocomplete="country">
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="GB">United Kingdom</option>
+              <option value="AU">Australia</option>
+              <option value="DE">Germany</option>
+              <option value="FR">France</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="checkout-nav">
+          <button class="btn-next" onclick="goStep(2)">Continue to Payment &#8594;</button>
+        </div>
+      </div>
+      <div class="checkout-panel" id="panel-2">
+        <div class="sec-title">Card Details</div>
+        <div class="form-row">
+          <div class="form-group" id="fg-cn">
+            <label for="f-cn">Name on Card</label>
+            <input type="text" id="f-cn" autocomplete="off" placeholder="Jane Smith">
+            <span class="field-err">Required</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" id="fg-cc">
+            <label for="f-cc">Card Number</label>
+            <div class="card-wrap">
+              <input type="text" id="f-cc" autocomplete="off" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric">
+              <span class="card-ico" id="card-ico">&#128179;</span>
+            </div>
+            <span class="field-err">Valid card number required</span>
+          </div>
+        </div>
+        <div class="form-row c2">
+          <div class="form-group" id="fg-ex">
+            <label for="f-ex">Expiry</label>
+            <input type="text" id="f-ex" autocomplete="off" placeholder="MM / YY" maxlength="7" inputmode="numeric">
+            <span class="field-err">MM / YY required</span>
+          </div>
+          <div class="form-group" id="fg-cv">
+            <label for="f-cv">CVV</label>
+            <input type="text" id="f-cv" autocomplete="off" placeholder="123" maxlength="4" inputmode="numeric">
+            <span class="field-err">Required</span>
+          </div>
+        </div>
+        <div class="sec-note">&#128274; Your payment info is encrypted and never stored on our servers</div>
+        <div class="checkout-nav">
+          <button class="btn-back" onclick="goStep(1)">&#8592; Back</button>
+          <button class="btn-next" onclick="goStep(3)">Review Order &#8594;</button>
+        </div>
+      </div>
+      <div class="checkout-panel" id="panel-3">
+        <div class="sec-title">Order Summary</div>
+        <div class="co-summary" id="review-summary"></div>
+        <div class="sec-title" style="margin-top:20px">Extras (toggle to add or remove)</div>
+        <div id="review-addons"></div>
+        <div class="sec-note" style="margin-top:16px">&#128274; Secure &bull; Encrypted &bull; Trusted</div>
+        <div class="checkout-nav">
+          <button class="btn-back" onclick="goStep(2)">&#8592; Back</button>
+          <button class="btn-next" id="place-btn" onclick="placeOrder()" style="background:var(--moss)">&#10003; Place Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
