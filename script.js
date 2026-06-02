@@ -363,7 +363,7 @@ function toggleRevAddon(id) {
    The secret key lives securely in Vercel environment variables.
    IMPORTANT: swap pk_test_... for pk_live_... before going live.
    ================================================================ */
-const STRIPE_PK = 'pk_test_51TdPvsK2cuhO8Q3MEv62MRWodCCL2AGOyPqQYJbvbXu8mFtPgjSx2aJ6SnNzuYcpFoL3oYopjtQ9b1vrGfi3GNWV00hOc8VIPF';
+const STRIPE_PK = 'pk_live_51TdPvsK2cuhO8Q3M3WKZoAGbe9AxlUndp85LfhfqO48Dyr5y25zwlfqr45ZUA2cSrCpFsxF1nmeo1gPy5VxNcaNE00qwrYSW2R';
 
 let stripeInstance   = null;
 let stripeElements   = null;
