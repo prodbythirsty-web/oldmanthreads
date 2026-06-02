@@ -1,0 +1,9 @@
+{
+  "name": "old-man-threads",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "stripe": "^16.0.0",
+    "node-fetch": "^3.0.0"
+  }
+}
